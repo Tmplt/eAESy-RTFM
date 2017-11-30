@@ -1,0 +1,6 @@
+[package]
+name = "eAESy-RTFM"
+version = "0.1.0"
+authors = ["Tmplt <tmplt@dragons.rocks>"]
+
+[dependencies]
