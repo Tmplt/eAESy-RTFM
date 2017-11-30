@@ -24,3 +24,7 @@ Licensed under either of
 * MIT license (LICENSE-MIT or http://opensource.org/licenses/MIT)
 
 at your option.
+
+Contribution
+---
+I will not accept code contributions while the course is running. Bug reports are welcome, however.
