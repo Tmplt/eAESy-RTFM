@@ -14,9 +14,11 @@ This project is divided into several parts I want to accomplish:
 
 Grading
 ---
-3. Establish a proof of concept by implementing AES encryption and decryption.
-4. Design a sensible API.
-5. Implement the API and show design correctness via test cases and/or examples.
+3. Experiment with the LPC43s50 microcontroller and backport the AES component of Rust's crypto crate to run on the microcontroller. Build a demo that securely communicates secrets with a host system using AES.
+
+4. Design a proper implementation of an API that would allow the crate to compile and run on both the LPC43s50 and the STM32F042K6 (with an appropriate AES-supporting MCU) microcontrollers with minimal alterations.
+
+5. Implement the API with proper documentation, testing and examples. Show a proof of correctness by writing test cases and/or examples.
 
 Docs, references
 ---
