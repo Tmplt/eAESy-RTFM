@@ -24,7 +24,10 @@ Docs, references
 ---
 * [AES Wikipedia entry](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 * [rust-crypto](https://github.com/DaGenix/rust-crypto/tree/master/src)
-* [microcontroller datasheet](https://www.nxp.com/docs/en/data-sheet/LPC43S50_30_20.pdf)
+* [microcontroller datasheet](https://github.com/Tmplt/eAESy-RTFM/blob/master/doc/LPC43S50/Datasheet.pdf)
+* [microcontroller users guide](https://github.com/Tmplt/eAESy-RTFM/blob/master/doc/LPC43S50/Users%20Guide.pdf)
+
+The microcontroller users guide contains AES API documentation.
 
 License
 ---
