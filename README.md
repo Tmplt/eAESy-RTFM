@@ -26,7 +26,7 @@ Docs, references
 * [rust-crypto](https://github.com/DaGenix/rust-crypto/tree/master/src)
 * [microcontroller datasheet](https://github.com/Tmplt/eAESy-RTFM/blob/master/doc/LPC43S50/Datasheet.pdf)
 * [microcontroller users guide](https://github.com/Tmplt/eAESy-RTFM/blob/master/doc/LPC43S50/Users%20Guide.pdf)
-* [Rust bindings for LPC43SXX](https://gitlab.henriktjader.com/pln/LPC43xx_43Sxx)
+* [Rust bindings for LPC43SXX](https://gitlab.henriktjader.com/pln/LPC43xx_43Sxx) — and [documentation for it](http://pln.gitpages.henriktjader.com/LPC43xx_43Sxx/lpc43xx_43sxx/)
 
 The microcontroller users guide contains AES API documentation.
 
