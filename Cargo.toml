@@ -1,5 +1,5 @@
 [package]
-name = "eAESy-RTFM"
+name = "e_easy_rtfm"
 version = "0.1.0"
 authors = ["Tmplt <tmplt@dragons.rocks>"]
 edition = "2018"
