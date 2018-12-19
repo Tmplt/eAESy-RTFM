@@ -1,8 +1,15 @@
 e*AES*y-RTFM — embedded AES {en,de}cryption
 ---
 
-This project aims to implement AES support on the NXP LPC4357 micro controller (with a LPC43s50 MCU) using Rust.
+This project aims to implement abstracted AES support on the NXP LPC43S50 microcontroller using Rust.
+When written, examples of this AES support will be shown in example applications, wrapped in [RTFM](http://www.rtfm-lang.org/).
+
 This project is a part of the D7018 course — *Special Studies in Embedded Systems* — taken at Luleå Technical University.
+
+<details>
+    <summary><i>Click here to see the possibly outdated plan.</i> </summary>
+
+---
 
 Instead of writing everything from scratch, rust-crypto will be used as base.
 This project is divided into several parts I want to accomplish:
@@ -19,6 +26,10 @@ This project is divided into several parts I want to accomplish:
 - [ ] fully understand the above (i.e. utilize examples, program hardware with it)
 - [ ] port headers to Rust
 - [ ] port AES API to Rust
+
+---
+
+</details>
 
 Grading
 ---
