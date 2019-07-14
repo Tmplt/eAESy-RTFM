@@ -1,5 +1,5 @@
 [package]
-name = "e_aesy_rtfm"
+name = "eaesy-rtfm"
 version = "0.1.0"
 authors = ["Tmplt <tmplt@dragons.rocks>"]
 edition = "2018"
@@ -11,3 +11,4 @@ s32k144evb = "0.7.0"
 
 [patch.crates-io]
 s32k144evb = { git = "https://github.com/tmplt/s32k144evb.rs.git" }
+
