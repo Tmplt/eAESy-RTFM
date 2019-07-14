@@ -1,7 +1,25 @@
-add-auto-load-safe-path /
+target remote :2331
 
-target remote :3333
-monitor arm semihosting enable
-
+define reload
 load
-step
+monitor reset
+continue
+end
+
+monitor speed 1000
+monitor clrbp
+monitor reset
+monitor halt
+monitor regs
+monitor speed auto
+monitor flash breakpoints 1
+monitor semihosting enable
+monitor semihosting IOClient 1
+load
+monitor clrbp
+monitor reset
+monitor halt
+monitor regs
+
+break main
+continue
