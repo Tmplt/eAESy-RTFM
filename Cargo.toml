@@ -11,4 +11,3 @@ s32k144evb = "0.7.0"
 
 [patch.crates-io]
 s32k144evb = { git = "https://github.com/tmplt/s32k144evb.rs.git" }
-
