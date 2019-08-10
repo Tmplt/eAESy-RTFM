@@ -63,3 +63,10 @@ Contribution
 
 I will not accept code contributions while the course is running (until this notice is removed).
 Bug reports are welcome, however.
+
+Improvements
+---
+
+The following is a list of improvements that can be done:
+* Statically checking `N % 16 == 0`. Not possible yet. See <https://internals.rust-lang.org/t/idea-static-assertions/7753>.
+* Make API more generic: `pub trait AESCbc<const N: usize> { fn foo(input: &[u8; N / 8], ...) ... }` so that one can `AESCbc<128>` or similar.
