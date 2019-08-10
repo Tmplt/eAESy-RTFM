@@ -6,5 +6,9 @@ edition = "2018"
 
 [dependencies]
 s32k144 = "0.10.0"
-s32k144evb = { git = "https://github.com/kjetilkjeka/s32k144evb.rs.git" }
+s32k144evb = { git = "https://github.com/tmplt/s32k144evb.rs.git" }
 cortex-m-rt = "0.6.9"
+
+[dependencies.static_assertions]
+version = "0.3.3"
+features = ["nightly"]
