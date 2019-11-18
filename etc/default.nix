@@ -19,8 +19,8 @@ let
     src = fetchurl {
       url = "https://www.segger.com/downloads/jlink/JLink_Linux_V${version'}_${arch}.deb";
       # TODO: fix  sha256 for i686
-      sha256 = "1ladqgszyicjg01waasbn5b6fngv4ap3vcksxcv1smrgr9yv9bv4";
-      curlOpts = "-d accept_license_agreement=accepted -d confirm=yes";
+      sha256 = "64afb47dca2f571d36eb7ab23dae22fb596756b14b2bc503789245fff5c34dd1";
+      curlOpts = "-d accept_license_agreement=accepted -d non_emb_ctr=confirmed";
     };
 
     nativeBuildInputs = [ dpkg ];
@@ -31,7 +31,7 @@ let
     '';
 
     dontPatchELF = true;
-
+    preferLocalBuild = true;
   };
 
   wrapJlink = name: deps: buildFHSUserEnv rec {
