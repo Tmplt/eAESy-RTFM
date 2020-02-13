@@ -1,6 +1,8 @@
 #![no_main]
 #![no_std]
 
+extern crate panic_halt;
+
 use cortex_m_rt::entry;
 use eaesy_rtfm::{self, AES128Cbc};
 use s32k144;

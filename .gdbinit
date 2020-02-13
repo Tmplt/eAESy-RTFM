@@ -1,9 +1,10 @@
 target remote :2331
 
 define reload
-load
-monitor reset
-continue
+    !cargo build --examples
+    monitor reset
+    load
+    continue
 end
 
 monitor speed 1000
@@ -22,4 +23,6 @@ monitor halt
 monitor regs
 
 break main
+break rust_begin_unwind
+break HardFault
 continue

@@ -1,13 +1,29 @@
 [package]
 name = "eaesy-rtfm"
 version = "0.1.0"
-authors = ["Tmplt <tmplt@dragons.rocks>"]
+authors = ["tmplt <tmplt@dragons.rocks>"]
 edition = "2018"
 
 [dependencies]
+cortex-m = "0.6.1"
 cortex-m-rt = "0.6.7"
 s32k144 = "0.10.0"
-s32k144evb = "0.7.0"
+hex-literal = "0.2.1"
+panic-halt = "0.2"
+block-cipher-trait = "0.6.2"
 
-[patch.crates-io]
-s32k144evb = { git = "https://github.com/tmplt/s32k144evb.rs.git" }
+[dependencies.s32k144evb]
+git = "https://github.com/kjetilkjeka/s32k144evb.rs"
+default-features = false
+
+[dependencies.block-modes]
+version = "0.3"
+default-features = false
+
+[dependencies.aes]
+version = "0.3"
+default-features = false
+
+[dependencies.aes-soft]
+version = "0.3"
+default-features = false

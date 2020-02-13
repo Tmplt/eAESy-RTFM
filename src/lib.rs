@@ -12,7 +12,6 @@
 //! ```
 #![no_std]
 #![allow(non_camel_case_types)]
-#![feature(const_generics)]
 
 use core::convert::TryInto;
 use s32k144;
@@ -29,12 +28,12 @@ pub trait AES128Cbc {
         plaintext: &[u8; 16],
         cipher: &mut [u8; 16],
     ) -> Result<(), Self::Error>;
-    fn encrypt<const N: usize>(
+    fn encrypt(
         &mut self,
         key: [u8; 16],
         iv: [u8; 16],
-        plaintext: &[u8; N],
-        cipher: &mut [u8; N],
+        plaintext: &[u8],
+        cipher: &mut [u8],
     ) -> Result<(), Self::Error>;
 
     fn impl_decrypt(
@@ -44,12 +43,12 @@ pub trait AES128Cbc {
         cipher: &[u8; 16],
         plaintext: &mut [u8; 16],
     ) -> Result<(), Self::Error>;
-    fn decrypt<const N: usize>(
+    fn decrypt(
         &mut self,
         key: [u8; 16],
         iv: [u8; 16],
-        cipher: &[u8; N],
-        plaintext: &mut [u8; N],
+        cipher: &[u8],
+        plaintext: &mut [u8],
     ) -> Result<(), Self::Error>;
 
     // TODO: default trait implementation is software implementation
@@ -82,16 +81,16 @@ impl AES128Cbc for s32k144AES {
         self.csec.encrypt_cbc(plaintext, &iv, cipher)
     }
 
-    fn encrypt<const N: usize>(
+    fn encrypt(
         &mut self,
         key: [u8; 16],
         iv: [u8; 16],
-        plaintext: &[u8; N],
-        cipher: &mut [u8; N],
+        plaintext: &[u8],
+        cipher: &mut [u8],
     ) -> Result<(), Error> {
-        if N % 16 != 0 {
-            return Err(Error::GeneralError);
-        }
+        // if N % 16 != 0 {
+        //     return Err(Error::GeneralError);
+        // }
 
         // NOTE(unwrap): With the check above, each chunk will always have the length 16.
         for (plaintext_chunk, cipher_chunk) in plaintext.chunks(16).zip(cipher.chunks_mut(16)) {
@@ -116,16 +115,16 @@ impl AES128Cbc for s32k144AES {
         self.csec.decrypt_cbc(cipher, &iv, plaintext)
     }
 
-    fn decrypt<const N: usize>(
+    fn decrypt(
         &mut self,
         key: [u8; 16],
         iv: [u8; 16],
-        cipher: &[u8; N],
-        plaintext: &mut [u8; N],
+        cipher: &[u8],
+        plaintext: &mut [u8],
     ) -> Result<(), Error> {
-        if N % 16 != 0 {
-            return Err(Error::GeneralError);
-        }
+        // if N % 16 != 0 {
+        //     return Err(Error::GeneralError);
+        // }
 
         // NOTE(unwrap): With the check above, each chunk will always have the length 16.
         for (plaintext_chunk, cipher_chunk) in plaintext.chunks_mut(16).zip(cipher.chunks(16)) {
