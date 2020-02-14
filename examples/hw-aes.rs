@@ -1,3 +1,4 @@
+//! Example utilizing the hardware accelerated cryptography engine on the S32K144EVB-Q100
 #![no_main]
 #![no_std]
 

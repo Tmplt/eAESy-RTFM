@@ -1,3 +1,4 @@
+//! Example of the fallback implemenation of AES128CBC
 #![no_main]
 #![no_std]
 
@@ -40,7 +41,7 @@ fn main() -> ! {
 
     // buffer must have enough space for message+padding
     let mut buffer = [0u8; 32];
-    // // copy message to the buffer
+    // copy message to the buffer
     let pos = plaintext.len();
     buffer[..pos].copy_from_slice(plaintext);
     let ciphertext = cipher.encrypt(&mut buffer, pos).unwrap();
