@@ -2,19 +2,15 @@
 #![no_main]
 #![no_std]
 
+#[macro_use]
+extern crate hex_literal;
+
 extern crate panic_halt;
 
 use cortex_m_rt::entry;
 use eaesy_rtfm::{self, AES128Cbc};
 use s32k144;
 use s32k144evb::wdog;
-
-const MSG_LEN: usize = 16 * 10;
-const MSG: [u8; MSG_LEN] = *b"Key:0123456789abKey:0123456789abKey:0123456789abKey:0123456789abKey:0123456789abKey:0123456789abKey:0123456789abKey:0123456789abKey:0123456789abKey:0123456789ab";
-const IV: [u8; 16] = [0; 16];
-const PLAINKEY: [u8; 16] = [
-    0x2b, 0x7e, 0x15, 0x16, 0x28, 0xae, 0xd2, 0xa6, 0xab, 0xf7, 0x15, 0x88, 0x09, 0xcf, 0x4f, 0x3c,
-];
 
 #[entry]
 fn main() -> ! {
@@ -27,15 +23,19 @@ fn main() -> ! {
     };
     let _wdog = wdog::Watchdog::init(&p.WDOG, wdog_settings).unwrap();
 
+    let key = hex!("000102030405060708090a0b0c0d0e0f");
+    let iv = hex!("f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff");
+    let plaintext = b"Hello world!\0\0\0\0"; // pad for 16B length
+
+    let mut enctext = [0u8; 16];
+    let mut dectext = [0u8; 16];
+
     let mut aes = eaesy_rtfm::s32k144AES::new(p.FTFC, p.CSE_PRAM);
 
-    let mut enctext: [u8; MSG_LEN] = [0; MSG_LEN];
-    let mut dectext: [u8; MSG_LEN] = [0; MSG_LEN];
+    aes.encrypt(key, iv, &plaintext[..], &mut enctext).unwrap();
+    aes.decrypt(key, iv, &enctext, &mut dectext).unwrap();
 
-    aes.encrypt(PLAINKEY, IV, &MSG, &mut enctext).unwrap();
-    aes.decrypt(PLAINKEY, IV, &enctext, &mut dectext).unwrap();
-
-    assert!(&MSG[..] == &dectext[..]);
+    assert!(&plaintext[..] == &dectext[..]);
 
     loop {}
 }
