@@ -8,6 +8,12 @@ type SwAES128Cbc = block_modes::Cbc<aes::Aes128, block_modes::block_padding::Pkc
 
 pub struct SoftwareAES;
 
+impl SoftwareAES {
+    pub fn new() -> Self {
+        SoftwareAES {}
+    }
+}
+
 impl AES128Cbc for SoftwareAES {
     type Error = Error;
 
