@@ -13,4 +13,5 @@
 #![no_std]
 
 mod aes128cbc;
+mod default;
 mod s32k144;
