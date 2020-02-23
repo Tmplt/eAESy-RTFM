@@ -32,3 +32,6 @@ required-features = ["s32k144evb-q100"]
 name = "sw-aes-16B"
 required-features = ["software"]
 
+[[example]]
+name = "swhw-aes-16B"
+required-features = ["s32k144evb-q100", "software"]
