@@ -13,5 +13,9 @@
 #![no_std]
 
 pub mod aes128cbc;
+
+#[cfg(feature = "software")]
 pub mod default;
+
+#[cfg(feature = "s32k144evb-q100")]
 pub mod s32k144;
