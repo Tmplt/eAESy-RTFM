@@ -12,6 +12,6 @@
 //! ```
 #![no_std]
 
-mod aes128cbc;
-mod default;
-mod s32k144;
+pub mod aes128cbc;
+pub mod default;
+pub mod s32k144;
