@@ -8,9 +8,10 @@ extern crate hex_literal;
 extern crate panic_halt;
 
 use cortex_m_rt::entry;
-use eaesy_rtfm::{self, AES128Cbc};
 use s32k144;
 use s32k144evb::wdog;
+
+use eaesy_rtfm::{aes128cbc::AES128Cbc, s32k144::S32k144AES};
 
 #[entry]
 fn main() -> ! {
@@ -30,7 +31,7 @@ fn main() -> ! {
     let mut enctext = [0u8; 16];
     let mut dectext = [0u8; 16];
 
-    let mut aes = eaesy_rtfm::s32k144AES::new(p.FTFC, p.CSE_PRAM);
+    let mut aes = S32k144AES::new(p.FTFC, p.CSE_PRAM);
 
     aes.encrypt(key, iv, &plaintext[..], &mut enctext).unwrap();
     aes.decrypt(key, iv, &enctext, &mut dectext).unwrap();

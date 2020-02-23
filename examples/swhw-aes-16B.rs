@@ -12,7 +12,7 @@ use block_cipher_trait::generic_array::GenericArray;
 use block_modes::block_padding::Pkcs7;
 use block_modes::{BlockMode, Cbc};
 use cortex_m_rt::entry;
-use eaesy_rtfm::{self, AES128Cbc};
+use eaesy_rtfm::{aes128cbc::AES128Cbc, s32k144::S32k144AES};
 use s32k144;
 use s32k144evb::wdog;
 
@@ -39,7 +39,7 @@ fn main() -> ! {
     let mut sw_buffer = [0u8; 32];
 
     // Encrypt via hardware
-    let mut aes = eaesy_rtfm::s32k144AES::new(p.FTFC, p.CSE_PRAM);
+    let mut aes = S32k144AES::new(p.FTFC, p.CSE_PRAM);
     aes.encrypt(key, iv, &plaintext[..], &mut hw_ciphertext)
         .unwrap();
 
