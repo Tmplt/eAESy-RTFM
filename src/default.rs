@@ -28,6 +28,7 @@ impl AES128Cbc for SoftwareAES {
             return Err(Error);
         }
 
+        // XXX: why do we hardfault when new_var is used (variable length)? Broken assembly?
         let cipher = SwAES128Cbc::new_fix(
             GenericArray::from_slice(&key),
             GenericArray::from_slice(&iv),
