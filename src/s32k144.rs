@@ -27,12 +27,12 @@ impl AES128Cbc for S32k144AES {
         buffer: &'a mut [u8],
         n: usize,
     ) -> Result<&'a [u8], Error> {
-        // Pad upwards to the first 16B multiple
+        // Pad upwards to the first BLOCK_SIZE (16B) multiple
         fn round_up_block(n: usize) -> usize {
-            ((n / BLOCK_SIZE) + (if n % 16 != 0 { 1 } else { 0 })) * 16
+            ((n / BLOCK_SIZE) + (if n % BLOCK_SIZE != 0 { 1 } else { 0 })) * BLOCK_SIZE
         }
         let buffer = Pkcs7::pad(buffer, n, round_up_block(n)).map_err(|_| Error::GeneralError)?;
-        assert!(buffer.len() % 16 == 0);
+        assert!(buffer.len() % BLOCK_SIZE == 0);
 
         // Encrypt in-place
         self.csec.load_plainkey(&key)?;
@@ -49,7 +49,7 @@ impl AES128Cbc for S32k144AES {
         iv: BlockType,
         buffer: &'a mut [u8],
     ) -> Result<&'a [u8], Error> {
-        if buffer.len() % 16 != 0 {
+        if buffer.len() % BLOCK_SIZE != 0 {
             return Err(Error::GeneralError);
         }
 
