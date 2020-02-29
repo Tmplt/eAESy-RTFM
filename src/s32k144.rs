@@ -1,3 +1,4 @@
+//! Hardware implementation of `AES128Cbc` for the NXP S32K144EVB-Q100.
 use crate::aes128cbc::{AES128Cbc, BlockType, BLOCK_SIZE};
 
 use block_padding::{Padding, Pkcs7};
@@ -10,6 +11,7 @@ pub struct S32k144AES {
 }
 
 impl S32k144AES {
+    /// Initializes the cryptography engine for encryption/decryption operations.
     pub fn new(ftfc: s32k144::FTFC, cse_pram: s32k144::CSE_PRAM) -> Self {
         S32k144AES {
             csec: csec::CSEc::init(ftfc, cse_pram),

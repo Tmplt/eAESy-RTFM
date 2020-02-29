@@ -26,7 +26,7 @@ fn main() -> ! {
 
     let key = hex!("000102030405060708090a0b0c0d0e0f");
     let iv = hex!("f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff");
-    let plaintext = b"Hello world!"; // pad for 16B length
+    let plaintext = b"Hello world!";
 
     let pos = plaintext.len();
     let mut sw_buffer = [0; 16];
