@@ -33,9 +33,9 @@ name = "hw-aes"
 required-features = ["s32k144evb-q100"]
 
 [[example]]
-name = "sw-aes-16B"
-required-features = ["software"]
+name = "sw-aes"
+required-features = ["software", "s32k144evb-q100"]
 
 [[example]]
-name = "swhw-aes-16B"
-required-features = ["s32k144evb-q100", "software"]
+name = "swhw-aes"
+required-features = ["software", "s32k144evb-q100"]
