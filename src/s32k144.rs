@@ -52,7 +52,7 @@ impl AES128Cbc for S32k144AES {
         buffer: &'a mut [u8],
     ) -> Result<&'a [u8], Error> {
         if buffer.len() % BLOCK_SIZE != 0 {
-            return Err(Error::GeneralError);
+            Err(Error::GeneralError)?
         }
 
         // Decrypt in-place
