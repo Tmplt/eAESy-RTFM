@@ -1,13 +1,10 @@
-use crate::aes128cbc::AES128Cbc;
+use crate::aes128cbc::{AES128Cbc, BlockType, BLOCK_SIZE};
 
 use block_padding::{Padding, Pkcs7};
 use core::convert::TryInto;
 use s32k144;
 use s32k144evb::csec;
 use s32k144evb::csec::CommandResult as Error;
-
-const BLOCK_SIZE: usize = 16;
-type BlockType = [u8; BLOCK_SIZE];
 
 pub struct S32k144AES {
     csec: csec::CSEc,
@@ -26,8 +23,8 @@ impl AES128Cbc for S32k144AES {
 
     fn encrypt<'a>(
         &mut self,
-        key: [u8; 16],
-        iv: [u8; 16],
+        key: BlockType,
+        iv: BlockType,
         buffer: &'a mut [u8],
         n: usize,
     ) -> Result<&'a [u8], Error> {
@@ -48,8 +45,8 @@ impl AES128Cbc for S32k144AES {
 
     fn decrypt<'a>(
         &mut self,
-        key: [u8; 16],
-        iv: [u8; 16],
+        key: BlockType,
+        iv: BlockType,
         buffer: &'a mut [u8],
     ) -> Result<&'a [u8], Error> {
         if buffer.len() % 16 != 0 {
