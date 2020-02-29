@@ -1,6 +1,6 @@
 [package]
 name = "eaesy-rtfm"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["tmplt <tmplt@dragons.rocks>"]
 edition = "2018"
 
