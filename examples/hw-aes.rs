@@ -37,7 +37,7 @@ fn main() -> ! {
     let _ciphertext = aes.encrypt(key, iv, &mut buffer, pos).unwrap();
     let decrypted_ciphertext = aes.decrypt(key, iv, &mut buffer).unwrap();
 
-    assert!(&plaintext[..] == decrypted_ciphertext);
+    assert_eq!(plaintext, decrypted_ciphertext);
 
     loop {}
 }
