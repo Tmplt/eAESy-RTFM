@@ -26,17 +26,18 @@ fn main() -> ! {
 
     let key = hex!("000102030405060708090a0b0c0d0e0f");
     let iv = hex!("f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff");
-    let plaintext = b"Hello world!\0\0\0\0"; // pad for 16B length
+    let plaintext = b"Hello world!";
 
-    let mut enctext = [0u8; 16];
-    let mut dectext = [0u8; 16];
+    let pos = plaintext.len();
+    let mut buffer = [0u8; 16];
+    buffer[..pos].copy_from_slice(plaintext);
 
     let mut aes = S32k144AES::new(p.FTFC, p.CSE_PRAM);
 
-    aes.encrypt(key, iv, &plaintext[..], &mut enctext).unwrap();
-    aes.decrypt(key, iv, &enctext, &mut dectext).unwrap();
+    let _ciphertext = aes.encrypt(key, iv, &mut buffer, pos).unwrap();
+    let decrypted_ciphertext = aes.decrypt(key, iv, &mut buffer).unwrap();
 
-    assert!(&plaintext[..] == &dectext[..]);
+    assert!(&plaintext[..] == decrypted_ciphertext);
 
     loop {}
 }

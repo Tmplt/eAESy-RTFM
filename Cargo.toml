@@ -7,7 +7,7 @@ edition = "2018"
 [features]
 default = ["software"]
 software = ["block-modes", "aes", "block-cipher-trait"]
-s32k144evb-q100 = ["s32k144evb", "s32k144"]
+s32k144evb-q100 = ["s32k144evb", "s32k144", "block-padding"]
 
 [dev-dependencies]
 cortex-m = "0.6.1"
@@ -19,13 +19,17 @@ s32k144evb = { git = "https://github.com/kjetilkjeka/s32k144evb.rs", default-fea
 
 [dependencies]
 block-cipher-trait = { version = "0.6.2", optional = true }
+block-padding = { version = "0.1.5", optional = true }
 s32k144 = { version = "0.10.0", optional = true }
 s32k144evb = { git = "https://github.com/kjetilkjeka/s32k144evb.rs", default-features = false, optional = true }
 block-modes = { version = "0.3", default-features = false, optional = true }
 aes = { version = "0.3", default-features = false, optional = true }
 
+[patch."https://github.com/kjetilkjeka/s32k144evb.rs"]
+s32k144evb =  { git = "https://github.com/tmplt/s32k144evb.rs", branch = "csec-inplace", version = "0.8.0" }
+
 [[example]]
-name = "hw-aes-16B"
+name = "hw-aes"
 required-features = ["s32k144evb-q100"]
 
 [[example]]
