@@ -5,4 +5,4 @@ Cargo.lock
 result-lib
 .envrc
 shell.nix
-lib
+memory.x
