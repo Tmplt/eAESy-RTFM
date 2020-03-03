@@ -1,8 +1,15 @@
 [package]
 name = "eaesy"
 version = "0.2.0"
-authors = ["tmplt <tmplt@dragons.rocks>"]
+authors = [
+    "tmplt <tmplt@dragons.rocks>",
+]
 edition = "2018"
+categories = ["embedded", "cryptography", "no-std"]
+description = "easy hardware-accelerated AES128CBC operations of arbitrary data on embedded targets"
+readme = "README.md"
+repository = "https://github.com/tmplt/eaesy"
+license = "MIT OR Apache-2.0"
 
 [features]
 default = ["software"]
