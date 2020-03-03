@@ -11,7 +11,7 @@ use cortex_m_rt::entry;
 use s32k144;
 use s32k144evb::wdog;
 
-use eaesy_rtfm::{aes128cbc::AES128Cbc, default::SoftwareAES, s32k144::S32k144AES};
+use eaesy::{aes128cbc::AES128Cbc, default::SoftwareAES, s32k144::S32k144AES};
 
 #[entry]
 fn main() -> ! {

@@ -1,4 +1,4 @@
-e*AES*y-RTFM — easy hardware-accelerated AES {en,de}cryption on embedded targets
+e*AES*y — easy hardware-accelerated AES128CBC operations of arbitrary data on embedded targets
 ---
 
 This crate exposes a trait for hardware-accelerated AES-128-CBC encryption/decryption on

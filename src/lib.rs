@@ -14,7 +14,7 @@
 //! #[macro_use]
 //! extern crate hex_literal;
 //!
-//! use easy_rtfm::{aes128cbc::AES128Cbc, default::SoftwareAES};
+//! use easy::{aes128cbc::AES128Cbc, default::SoftwareAES};
 //!
 //! // ...
 //!
