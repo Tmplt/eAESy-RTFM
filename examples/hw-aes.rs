@@ -9,7 +9,7 @@ extern crate panic_halt;
 
 use cortex_m_rt::entry;
 use s32k144;
-use s32k144evb::wdog;
+use s32k144evb_hal::wdog;
 
 use eaesy::{aes128cbc::AES128Cbc, s32k144::S32k144AES};
 

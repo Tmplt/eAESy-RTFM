@@ -14,7 +14,7 @@ license = "MIT OR Apache-2.0"
 [features]
 default = ["software"]
 software = ["block-modes", "aes", "block-cipher-trait"]
-s32k144evb-q100 = ["s32k144evb", "s32k144", "block-padding"]
+s32k144evb-q100 = ["s32k144evb-hal", "s32k144", "block-padding"]
 
 [dev-dependencies]
 cortex-m = "0.6.1"
@@ -22,18 +22,15 @@ cortex-m-rt = "0.6.7"
 hex-literal = "0.2.1"
 panic-halt = "0.2"
 s32k144 = "0.10.0"
-s32k144evb = { git = "https://github.com/kjetilkjeka/s32k144evb.rs", default-features = false }
+s32k144evb-hal = { version = "0.8.0", default-features = false }
 
 [dependencies]
 block-cipher-trait = { version = "0.6.2", optional = true }
 block-padding = { version = "0.1.5", optional = true }
 s32k144 = { version = "0.10.0", optional = true }
-s32k144evb = { git = "https://github.com/kjetilkjeka/s32k144evb.rs", default-features = false, optional = true }
+s32k144evb-hal = { version = "0.8.0", default-features = false, optional = true }
 block-modes = { version = "0.3", default-features = false, optional = true }
 aes = { version = "0.3", default-features = false, optional = true }
-
-[patch."https://github.com/kjetilkjeka/s32k144evb.rs"]
-s32k144evb =  { git = "https://github.com/tmplt/s32k144evb.rs", branch = "csec-inplace", version = "0.8.0" }
 
 [[example]]
 name = "hw-aes"
