@@ -3,8 +3,8 @@ use crate::aes128cbc::{AES128Cbc, BlockType, BLOCK_SIZE};
 
 use block_padding::{Padding, Pkcs7};
 use s32k144;
-use s32k144evb_hal::csec;
-use s32k144evb_hal::csec::CommandResult as Error;
+use s32k144evb::csec;
+use s32k144evb::csec::CommandResult as Error;
 
 pub struct S32k144AES {
     csec: csec::CSEc,
